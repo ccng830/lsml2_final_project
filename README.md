@@ -21,7 +21,7 @@ Second, in docker part, I will use a django framework as backend, and design a s
 
 1. Downlaod or clone this repo
 ``` shell
-cd final project docker part
+cd final_project_docker_part
 ```
 
 2. docker-compose

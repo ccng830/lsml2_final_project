@@ -82,7 +82,7 @@ For the losses part, I noticed that the dataset is imbalance, hence, I will use 
     </a>
 </div>
 
-And for the metrics, I will use F1-score as the main metric to evulate the model performance because of imbalance dataset.
+And for the metrics, I will use F1-score as the main metric to evaluate the model performance because of imbalance dataset.
 
 ### Training details
 
@@ -139,4 +139,4 @@ In this project, I used postgres.
 
 In the frontend part, I simply made a HTML website for sevice. Client can easily upload an image of skin via the HTML website, and the image will be passed to the resnet model for prediction, and finally return the prediction to the HTML.
 
-Furthermore, the service is a synchronous projects.
+Furthermore, the service is a synchronous project.

@@ -1,13 +1,15 @@
 # lsml2_final_project: Skin Cancer classification using Resnet
 
 
-## Introduction
+## Project introduction
 
 This project is about a skin cancer classification project. In this project, I simply divied it into two parts: Model training part and docker part. 
 
-First, in model training part, I will use [HAM10000](https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000) dataset to train a Resnet model from scratch. And save the best performance model.
+First, in model training part, I will use [HAM10000](https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000) dataset to train Resnet18 model and Resnet50 model from scratch. And then I will compare which model has the best performance on testing set, and use the model as the final model.
 
-Second, in docker part, I will use a django framework as backend, and design a simple HTML frontend for uploading a skin image. Once the skin image is uploaded, it will pass it to the best performance model for prediction, and finaly return the result to the HTML.
+Second, in docker part, I will use a django framework as backend, and design a simple HTML website as frontend for uploading a skin image. Once the skin image is uploaded, it will pass it to the best model for prediction, and finally return the prediction to the HTML.
+
+And the gif below shows how the website works:
 
 <div align="center">
     <a href="./">
@@ -19,16 +21,18 @@ Second, in docker part, I will use a django framework as backend, and design a s
 
 ### Quick start
 
-1. Downlaod or clone this repo
+1. Downlaod or clone this repo, then cd to the final_project_docker_part folder.
 ``` shell
 cd final_project_docker_part
 ```
+
+This folder contains a `docker-compose.yml` file.
 
 2. docker-compose
 ``` shell
 docker-compose up
 ```
-After runing docker-compose up, it will start the local django server. And then open 127.0.0.1:8000
+After runing docker-compose up, it will start the local django server. And then open 127.0.0.1:8000 in your browser, it will show the skin cancer detection page as we mentioned.
 
 ## Resnet model training part
 
@@ -73,7 +77,7 @@ For the losses part, I noticed that the dataset is imbalance, hence, I will use 
 
 <div align="center">
     <a href="./">
-        <img src="./images/data_distri.png" width="79%"/>
+        <img src="./images/data_distri.png" width="50%"/>
     </a>
 </div>
 

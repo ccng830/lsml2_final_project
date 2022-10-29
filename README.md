@@ -13,7 +13,7 @@ And the gif below shows how the website works:
 
 <div align="center">
     <a href="./">
-        <img src="./images/intro.gif" width="79%"/>
+        <img src="./images/intro.gif" width="100%"/>
     </a>
 </div>
 

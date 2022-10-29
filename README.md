@@ -30,7 +30,11 @@ docker-compose up
 ```
 After runing docker-compose up, it will start the local django server. And then open 127.0.0.1:8000
 
-## Resnet model traning part
+## Resnet model training part
+
+<a href="https://colab.research.google.com/drive/1BQn7YQLfj5yJzhJfofESoc-8IaSr_RkG"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+
+In model training part, I use colab to train my model, you can use my colab notebook to reproduce the results.
 
 ### Dataset
 
@@ -61,5 +65,17 @@ For passing data to dataloader easily, I moved X_train into dataset/train, X_val
 
 Furthermore, I also uploaded this dataset to my google drive, you can also use this [link](https://drive.google.com/drive/folders/1U1jRNoDF1-__qIWq1Q0tHjuOXUrXF0VV?usp=sharing) to access this dataset, and create a shortcut to your google drvie.
 
-<a href="https://colab.research.google.com/drive/1BQn7YQLfj5yJzhJfofESoc-8IaSr_RkG"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+### Architecture, losses, metrics
+
+The model Architecture, I select two models as candidantes. Resnet18 and Resnet50, neither of them don't use pretrain. I train the model from scratch.
+
+For the losses part, I noticed that the dataset is imbalance, hence, I will use weighted cross entropy as the loss function.
+
+<div align="center">
+    <a href="./">
+        <img src="./images/data_distri.png" width="79%"/>
+    </a>
+</div>
+
+And for the metrics, I will use F1-score as the main metric to evulate the model performance because of imbalance dataset.
 

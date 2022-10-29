@@ -34,7 +34,7 @@ After runing docker-compose up, it will start the local django server. And then 
 
 <a href="https://colab.research.google.com/drive/1BQn7YQLfj5yJzhJfofESoc-8IaSr_RkG"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
 
-In model training part, I use colab to train my model, you can use my colab notebook to reproduce the results.
+In model training part, I used colab to train my model, you can use my colab notebook to reproduce the results.
 
 ### Dataset
 
@@ -79,3 +79,35 @@ For the losses part, I noticed that the dataset is imbalance, hence, I will use 
 
 And for the metrics, I will use F1-score as the main metric to evulate the model performance because of imbalance dataset.
 
+### Training details
+
+For Resnet18, I trained 20 epochs, use AdamW as optimizer, and the plot of training history is shown below.
+
+<div align="center">
+    <a href="./">
+        <img src="./images/resnet18_train_history.png" width="79%"/>
+    </a>
+</div>
+
+After training 20 epochs, we can find that the loss not decrease significantly. At 19 epoch, has the highest f1-score, so I will select this model as the best resnet18 model.
+
+For Resnet50, with same hyperparameters as Resnet18, also trained 20 epochs, use AdamW as optimizer, and the plot of training history is shown below.
+
+<div align="center">
+    <a href="./">
+        <img src="./images/resnet50_train_history.png" width="79%"/>
+    </a>
+</div>
+
+We can find that at 16 epoch, the model has the lowest loss. After 16 epoch, the loss slightly increases, it refers to overfit. Hence, I will stop at 16 epoch, and use this model as the best resnet50 model.
+
+### Testing Model
+
+Finally, I use the testing set test both Resnet18 and Resnet50, and the result is shown below.
+
+| Model | Acc | F1-score | Precision | Recall |
+| :-- | :-: | :-: | :-: | :-: |
+| Resnet18 | **0.650** | **0.691** | **0.736** | **0.651** |
+| Resnet50 | 0.550 | 0.627 | 0.730 | 0.550 |
+
+We can find that the performance (f1-score) of resnet18 is better than resnet50. Because in this project, I didn't use pretrain resnet, and we only have around 6,000 images for training, besides, the dataset is very imbalance. Hence, it might not have enough images to update the weights in the resnet50. So in this case, a small model might performs better.

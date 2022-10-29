@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/68f8681dba.js" crossorigin="anonymous"></script>
+
+    <title>SKIN CANCER DETECTION</title>
+  </head>
+  <body>
+    <div class='container'>
+      <br>
+      <div class='row'>
+            <div class='col-md-12 text-left'>
+                <div class="card {{question.tag}}" style="border-radius: 5px; border-left: 5px solid #86aecf; box-shadow: 1px 1px 15px 5px rgba(242, 242, 242, 0.8);">
+                    <div class="card-body">
+                        <section class="text-center">
+                          <div class="container">
+                            <h1>SKIN CANCER DETECTION</h1>
+                            <p class="lead text-muted">Upload your skin image for detection.</p>
+                          </div>
+                        </section>
+                        <br>
+                        <section id="instruction">
+                            <div class="container text-left">
+                                <p>
+                                    <h6>
+                                        <i class='fas fa-microscope' style='font-size: 1.2em; color: black;'></i> This website can make a prediction of an skin image into 7 classes:</h6>
+                                    <li>Actinic keratoses and intraepithelial carcinoma / Bowen's disease (akiec)</li>
+                                    <li>Basal cell carcinoma (bcc)</li>
+                                    <li>Benign keratosis-like lesions (solar lentigines / seborrheic keratoses and lichen-planus like keratoses, bkl)</li>
+                                    <li>Dermatofibroma (df)</li>
+                                    <li>Melanoma (mel)</li>
+                                    <li>Melanocytic nevi (nv)</li>
+                                    <li>Vascular lesions (angiomas, angiokeratomas, pyogenic granulomas and hemorrhage, vasc).</li>
+                                </p>
+
+                            </div>
+                        </section>
+                        <br>
+                        <hr>
+                        <br>
+                        <section id="upload_form">
+                            <div class="container">
+                                {% block upload %}
+                                    <form action="" method="POST" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        
+                                        <div class="form">
+                                            <div class="mb-3">
+                                                {{ form.image }}
+                                            </div>
+                                            
+                                            <div style="text-align: center;">
+                                              <input type="submit" value="Submit" class="btn btn-primary" style="width: 100%; background: #86aecf; color: fcfdfc; border: transparent;" />
+                                            </div>
+                                        </div>
+                                    </form>
+                                {% endblock  %}
+                            </div>
+                        </section>
+
+                        <br />
+                        <section>
+                            {% block content %}
+                                {% if photos %}
+                                <div class="text-center">
+                                    <h5>Model prediction: {{predict}}</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="container">
+                                        <img src="{{ photos }}" class="card-img-top" >
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endblock  %}
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

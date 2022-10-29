@@ -32,6 +32,7 @@ This folder contains a `docker-compose.yml` file.
 ``` shell
 docker-compose up
 ```
+
 After runing docker-compose up, it will start the local django server. And then open 127.0.0.1:8000 in your browser, it will show the skin cancer detection page as we mentioned.
 
 ## Resnet model training part
@@ -115,3 +116,27 @@ Finally, I use the testing set test both Resnet18 and Resnet50, and the result i
 | Resnet50 | 0.550 | 0.627 | 0.730 | 0.550 |
 
 We can find that the performance (f1-score) of resnet18 is better than resnet50. Because in this project, I didn't use pretrain resnet, and we only have around 6,000 images for training, besides, the dataset is very imbalance. Hence, it might not have enough images to update the weights in the resnet50. So in this case, a small model might performs better.
+
+## Service deployment and usage instructions
+
+### dockerfile and docker-compose file
+
+In `dockerfile`, it mainly install requirements, and run the cmd: python manage.py runserver 0.0.0.0:8000
+- Django==3.2.8
+- djangorestframework==3.12.4
+- psycopg2==2.9.1
+- Pillow
+- torchvision
+- torch 
+
+In `docker-compose.yml` file, since I've already built the django project, so this file mainly for making migration, for propagating changes things (adding a field, deleting a model, etc.) into the database schema.
+
+### required services: databases
+
+In this project, I used postgres.
+
+### client for service
+
+In the frontend part, I simply made a HTML website for sevice. Client can easily upload an image of skin via the HTML website, and the image will be passed to the resnet model for prediction, and finally return the prediction to the HTML.
+
+Furthermore, the service is a synchronous projects.

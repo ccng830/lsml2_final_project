@@ -137,6 +137,10 @@ In this project, I used postgres.
 
 ### client for service
 
-In the frontend part, I simply made a HTML website for sevice. Client can easily upload an image of skin via the HTML website, and the image will be passed to the resnet model for prediction, and finally return the prediction to the HTML.
+In the frontend part, I simply made a HTML website for sevice. Client can easily upload an image of skin via the HTML website, and the image will be passed to the resnet model for prediction, and finally return the prediction to the HTML. The demonstration gif is shown at [Project introduction](https://github.com/ccng830/lsml2_final_project#project-introduction) part.
 
 Furthermore, the service is a synchronous project.
+
+### Usage instructions
+
+Refers to [Quick start](https://github.com/ccng830/lsml2_final_project#quick-start)

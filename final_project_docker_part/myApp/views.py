@@ -66,7 +66,7 @@ def model_predition(img, model):
     return out.argmax(-1).item()
 
 resnet18_model = custom_resnet(backbone="resnet18")
-resnet18_model.load_state_dict(torch.load("resnet18_19.pth", map_location=torch.device('cpu')))
+resnet18_model.load_state_dict(torch.load("distll_resnet_0.5_15_best.pth", map_location=torch.device('cpu')))
 
 def hello(request):
 	return HttpResponse("Hello world ! ")

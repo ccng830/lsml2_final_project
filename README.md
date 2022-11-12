@@ -106,16 +106,41 @@ For Resnet50, with same hyperparameters as Resnet18, also trained 20 epochs, use
 
 We can find that at 16 epoch, the model has the lowest loss. After 16 epoch, the loss slightly increases, it refers to overfit. Hence, I will stop at 16 epoch, and use this model as the best resnet50 model.
 
+#### Knowledge distillation
+
+For improving the performance of the model, I select a pre-trained convnext large model for transfer learning, and then I will apply knowledge distillation, use this model as teacher to teach our pervious resnet18 model
+
+The figure shows below is the training history of the convnext model, I train it 7 epochs, and at the 4 epoch, it has the best f1 score on validation set, around 85%, so I stop at this epoch.
+
+<div align="center">
+    <a href="./">
+        <img src="./images/convnext_train_history.png" width="79%"/>
+    </a>
+</div>
+
+Next, distilling the knowledge from ConvNeXt to Resnet18, I use grid search to find the best alpha and temperature. 
+
+- alpha list: [0.1, 0.3, 0.5, 0.7, 0.9]
+- temperature list: [1, 5, 10, 15, 20]
+
+I ran total 25 experiments. finally the best hyperparameters in distillation part is alpha = 0.5 and temperature = 15, the f1 of resnet18 = 73%.
+
 ### Testing Model
 
-Finally, I use the testing set test both Resnet18 and Resnet50, and the result is shown below.
+In this part, I use the testing set test different models, and the result is shown below.
 
-| Model | Acc | F1-score | Precision | Recall |
-| :-- | :-: | :-: | :-: | :-: |
-| Resnet18 | **0.650** | **0.691** | **0.736** | **0.651** |
-| Resnet50 | 0.550 | 0.627 | 0.730 | 0.550 |
+| Model | Acc | F1-score | Precision | Recall | Size |
+| :-- | :-: | :-: | :-: | :-: | :-: |
+| Resnet18 | 0.650 | 0.691 | 0.736 | 0.651 | 45.8mb |
+| Resnet50 | 0.550 | 0.627 | 0.730 | 0.550 | 100.2mb |
+| Distill Resnet18 | 0.731 | 0.731 | 0.726 | 0.736 | 45.8mb |
+| ConvNeXt large | 0.841 | 0.849 | 0.857 | 0.841 | 766.7mb |
 
 We can find that the performance (f1-score) of resnet18 is better than resnet50. Because in this project, I didn't use pretrain resnet, and we only have around 6,000 images for training, besides, the dataset is very imbalance. Hence, it might not have enough images to update the weights in the resnet50. So in this case, a small model might performs better.
+
+And the f1 score of Distill Resnet18 on testing set is 73.1%, better than the resnet18 training from scratch 69.1%, it almost improves 4%.
+
+Although the performance of distill resnet18 is not as good as the teacher model (f1=84.9%), but if we take the model size into account, the resnet18 only takes 45.8mb, and the convnext takes 766.7mb.
 
 ## Service deployment and usage instructions
 

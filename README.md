@@ -76,9 +76,10 @@ The model Architecture, I select two models as candidantes. Resnet18 and Resnet5
 
 <div align="center">
     <a href="./">
-        <img src="https://pytorch.org/assets/images/resnet.png" width="80%"/>
+        <img src="./images/resnet_table.png" width="90%"/>
     </a>
 </div>
+Source: [Deep Residual Learning for Image Recognition](https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf)
 
 For the losses part, I noticed that the dataset is imbalance, hence, I will use weighted cross entropy as the loss function.
 

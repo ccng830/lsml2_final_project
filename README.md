@@ -76,7 +76,7 @@ The model Architecture, I select two models as candidantes. Resnet18 and Resnet5
 
 <div align="center">
     <a href="./">
-        <img src="https://pytorch.org/assets/images/resnet.png" width="50%"/>
+        <img src="https://pytorch.org/assets/images/resnet.png" width="80%"/>
     </a>
 </div>
 

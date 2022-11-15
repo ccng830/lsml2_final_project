@@ -72,7 +72,7 @@ Furthermore, I also uploaded this dataset to my google drive, you can also use t
 
 ### Architecture, losses, metrics
 
-The model Architecture, I select two models as candidantes. Resnet18 and Resnet50, neither of them don't use pretrain. I train the model from scratch.
+The model Architecture, I select two models as candidantes. Resnet18 and Resnet50, none of them use pre-trained. I train the model from scratch.
 
 <div align="center">
     <a href="./">

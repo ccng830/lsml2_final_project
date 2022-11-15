@@ -74,6 +74,12 @@ Furthermore, I also uploaded this dataset to my google drive, you can also use t
 
 The model Architecture, I select two models as candidantes. Resnet18 and Resnet50, neither of them don't use pretrain. I train the model from scratch.
 
+<div align="center">
+    <a href="./">
+        <img src="https://pytorch.org/assets/images/resnet.png" width="50%"/>
+    </a>
+</div>
+
 For the losses part, I noticed that the dataset is imbalance, hence, I will use weighted cross entropy as the loss function.
 
 <div align="center">
